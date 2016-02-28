@@ -1,5 +1,5 @@
 {
-  "name": "myhapi",
+  "name": "hapi-auth-doc",
   "version": "1.0.0",
   "description": "try to use hapi to REST and 2 kind of db etc",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "myhapi"
+    "url": "hapi-auth-doc-sample"
   },
   "author": "cntower",
   "license": "ISC",
