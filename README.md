@@ -11,7 +11,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * Summary of set up: 
   npm install
-* Configuration
+* Configuration: в config.js можно указать hostname & port
 * Dependencies
   Необходим установленный драйвер mongodb
 * Database configuration:
