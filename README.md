@@ -9,16 +9,16 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Summary of set up 
+* Summary of set up: 
   npm install
 * Configuration
-  необходимо удалить строку с  connectString в config.js и 
-  указать там же конфигурацию вашей mongodb
 * Dependencies
   Необходим установленный драйвер mongodb
-* Database configuration
+* Database configuration:
+  необходимо удалить строку с  connectString в config.js и 
+  указать там же конфигурацию вашей mongodb
    
-* How to run tests
+* How to run tests:
   npm start
   
 * Deployment instructions
