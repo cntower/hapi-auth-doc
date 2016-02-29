@@ -86,6 +86,19 @@ server.register([
         options: options
     }],
     (err) => {
+
+    server.route({
+    method: 'GET',
+    path: '/{filename*}',
+    handler: {
+        directory: {
+            path: __dirname + '/public',
+            listing: false,
+            index: false
+        }
+    }
+});
+
     server.start( (err) => {
     if (err) {
         console.log(err);

@@ -1,14 +1,118 @@
 <!doctype html>
 
-<html lang="en">
+<html ng-app="productStore" lang="en">
 <head>
     <meta charset="utf-8">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
 </head>
-<body>
+</head>
+<body ng-controller="StoreController as store">
+<div class="container">
+
 <h1> Привет! </h1>
-
-<p> Хотели бы вы <a href="login">войти</a> или <a href="register">зарегестрироваться</a>? </p>
 <p> Для администратора доступен раздел <a href="documentation">документации</a>. </p>
+<section ng-controller="PanelController as panel">
+    <ul class="nav nav-pills">
+        <li ng-class="{active: panel.isSel(1)}">
+            <a href ng-click = "panel.selectTab(1)">Register</a></li>
+        <li ng-class="{active: panel.isSel(2)}">
+            <a href ng-click = "panel.selectTab(2)">Login</a></li>
+        <li ng-class="{active: panel.isSel(3)}">
+            <a href ng-click = "panel.selectTab(3)">Logout</a></li>
+    </ul>
+    <div class="panel" ng-show="panel.isSel(1)">
+        <blockquote>
+        <!-- Form -->
+        <form name="registerForm" ng-controller="RegController as regCtrl" ng-submit="registerForm.$valid && regCtrl.addUser(regCtrl.user)" novalidate>
 
+            <h4>Submit a Registration</h4>
+            <fieldset class="form-group">
+                <input ng-model="regCtrl.user.email" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
+            </fieldset>
+            <fieldset class="form-group">
+                <input ng-model="regCtrl.user.password" type="password" class="form-control" placeholder="" title="Password" required />
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Submit Registration" />
+            </fieldset>
+        </form>
+        </blockquote>
+    </div>
+    <div class="panel" ng-show="panel.isSel(2)">
+        <!--<h4>Login</h4>-->
+        <blockquote>
+        <!-- Form -->
+        <form name="loginForm" ng-controller="LoginController as logCtrl" ng-submit="loginForm.$valid && logCtrl.getCheckLogin(logCtrl.user)" novalidate>
+
+            <h4>Login</h4>
+            <fieldset class="form-group">
+                <input ng-model="logCtrl.user.email" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
+            </fieldset>
+            <fieldset class="form-group">
+                <input ng-model="logCtrl.user.password" type="password" class="form-control" placeholder="" title="Password" required />
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Login" />
+            </fieldset>
+        </form>
+        </blockquote>
+    </div>
+    <div class="panel" ng-show="panel.isSel(3)">
+        <blockquote>
+            <!-- Form -->
+            <form name="logoutForm" ng-controller="LogoutController as outCtrl" ng-submit="logoutForm.$valid && outCtrl.logout()" novalidate>
+
+                <h4>Logout</h4>
+                <fieldset class="form-group">
+                    <input type="submit" class="btn btn-primary pull-right" value="Logout" />
+                </fieldset>
+            </form>
+        </blockquote>
+    </div>
+    </section>
+    <section ng-show="logined">
+    <div class="panel">
+        <blockquote>
+            <!-- Form -->
+            <form name="productForm" ng-controller="ProductController as prodCtrl" ng-submit="productForm.$valid && prodCtrl.addProduct(prodCtrl.product)" novalidate>
+
+                <h4>Submit a Product</h4>
+                <fieldset class="form-group">
+                    <input ng-model="prodCtrl.product.name" type="text" class="form-control" placeholder="Bread" title="Name" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <input ng-model="prodCtrl.product.description" type="text" class="form-control" placeholder="Description" title="Description" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <input ng-model="prodCtrl.product.price" type="number" class="form-control" placeholder="999.99" title="Prise" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <input ng-model="prodCtrl.product.barcode" type="text" class="form-control" placeholder="12345678999" title="Barcode" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <input ng-model="prodCtrl.product.category" type="text" class="form-control" placeholder="food" title="category" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <input type="submit" class="btn btn-primary pull-right" value="Submit Product" />
+                </fieldset>
+            </form>
+        </blockquote>
+    </div>
+
+    <ul class="product row" ng-repeat="product in store.products">
+        <li>{[{ product.name }]}</li>
+        <li>{[{ product.description }]}</li>
+        <li>{[{ product.price }]}</li>
+        <li>{[{ product.barcode }]}</li>
+        <li>{[{ product.category }]}</li>
+    </ul>
+    </section>
+</div>
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
