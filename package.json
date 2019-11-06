@@ -22,7 +22,7 @@
     "inert": "^3.2.0",
     "joi": "^8.0.3",
     "mongodb": "^2.1.7",
-    "mongoose": "^4.4.5",
+    "mongoose": "^5.7.8",
     "node-gyp": "^3.3.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
